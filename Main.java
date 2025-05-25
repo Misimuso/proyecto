@@ -9,6 +9,7 @@ public class Main {
         int opcionNumero;
         ArrayList<Producto> productos = new ArrayList<>();
         Scanner entrada = new Scanner(System.in);
+        ArrayList<Pedido> pedidos = new ArrayList<>();
 
 
         do {
@@ -34,7 +35,7 @@ public class Main {
                 case 2 -> listaProducto(productos);
                 case 3 -> buscarProducto(productos);
                 case 4 -> borrarProducto(productos);
-                case 5 -> System.out.println("Gracias por usar la appp");
+                case 5 -> realizarPedido(productos, pedidos);
                 case 6 -> System.out.println("Gracias por usar la apppp");
                 case 7 -> System.out.println("Gracias por usar la app");
                 default -> System.out.println("Opcion incorrecta");
@@ -142,7 +143,42 @@ public class Main {
         }
     }
 
+    //5 en progreso, falta terminar
+    private static void realizarPedido(ArrayList<Producto> productos, ArrayList<Pedido> pedidos){
+        Scanner entrada = new Scanner(System.in);
+        Pedido nuevoPedido = new Pedido();
+        System.out.print("Ingrese ID del producto a buscar: ");
+        int idBuscado = entrada.nextInt();
 
+        Producto productoEncontrado = null;
+        for (Producto I : productos) {
+            if (I.getId() == idBuscado) {
+                productoEncontrado = I;
+                break;
+            }
+        }
+
+        if (productoEncontrado != null) {
+            System.out.println("Producto encontrado: " );
+            productoEncontrado.infoProducto();
+            System.out.println("Desea comprar el producto? ");
+            System.out.println("1 - SI");
+            System.out.println("2 - NO");
+            int opcionCompra = entrada.nextInt();
+            entrada.nextLine();
+            if (opcionCompra == 1){
+                System.out.print("Ingrese la cantidad a comprar: ");
+                int cantidad = entrada.nextInt();
+                entrada.nextLine();
+                // WIP TERMINAR
+
+            }
+        } else {
+            System.out.println("Producto no encontrado.");
+        }
+    }
+
+    //6 WIP TERMINAR
 
 
 
